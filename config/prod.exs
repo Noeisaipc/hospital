@@ -12,6 +12,7 @@ use Mix.Config
 config :hospital, HospitalWeb.Endpoint,
   url: [scheme: "https", host: "ancient-meadow-86246", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
