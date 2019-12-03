@@ -18,6 +18,7 @@ defmodule HospitalWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :login
+    get "/profile", PageController, :profile
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     resources "/users", UserController
     resources "/patients", PatientController

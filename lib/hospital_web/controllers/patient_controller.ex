@@ -63,11 +63,18 @@ defmodule HospitalWeb.PatientController do
   end
 
   defp authenticate(conn, _opts) do
-    if conn.assigns.current_user.id == 1 do
-      conn
+    if conn.assigns.current_user do
+      if conn.assigns.current_user.id == 1 do
+        conn
+        else
+          conn
+          |> put_flash(:error, "Tienes que ser Doctor para atender un paciente ")
+          |> redirect(to: Routes.page_path(conn, :login))
+          |> halt()
+      end
     else
       conn
-      |> put_flash(:error, "Tienes que Iniciar Sesion para aceder a esta pagina y ser doctor")
+      |> put_flash(:error, "Tienes que Iniciar Sesion ")
       |> redirect(to: Routes.page_path(conn, :login))
       |> halt()
     end

@@ -6,7 +6,7 @@ defmodule HospitalWeb.SessionController do
     def new(conn, _params) do
         if conn.assigns.current_user do
             conn
-            |>redirect(to: Routes.page_path(conn, :softgrafic))
+            |>redirect(to: Routes.page_path(conn, :profile))
           else
             conn
             |>render conn, "new.html"
@@ -28,7 +28,7 @@ defmodule HospitalWeb.SessionController do
     def delete(conn, _) do
         conn
         |> HospitalWeb.Authentication.logout()
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> redirect(to: Routes.page_path(conn, :login))
     end
 
 end

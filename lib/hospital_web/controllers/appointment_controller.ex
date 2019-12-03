@@ -63,13 +63,21 @@ defmodule HospitalWeb.AppointmentController do
   end
 
   defp authenticate(conn, _opts) do
-    if conn.assigns.current_user.id == 2 do
-      conn
+    if conn.assigns.current_user do
+      if conn.assigns.current_user.id == 2 do
+        conn
+        else
+          conn
+          |> put_flash(:error, "Tienes que ser Secretaria para agendar una cita ")
+          |> redirect(to: Routes.page_path(conn, :login))
+          |> halt()
+      end
     else
       conn
-      |> put_flash(:error, "Tienes que Iniciar Sesion para aceder a esta pagina y ser Secretaria")
+      |> put_flash(:error, "Tienes que Iniciar Sesion ")
       |> redirect(to: Routes.page_path(conn, :login))
       |> halt()
     end
   end
+  
 end

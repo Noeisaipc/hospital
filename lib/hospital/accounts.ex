@@ -120,7 +120,7 @@ defmodule Hospital.Accounts do
   end
 
   def get_by_email(email) do
-    case Repo.get_by(User, email: email) do
+    case Repo.get_by(User, correo: email) do
       nil ->
         {:error, "User not found"}
       alumno ->
