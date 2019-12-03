@@ -1,0 +1,34 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :nombre %>
+  <%= text_input f, :nombre %>
+  <%= error_tag f, :nombre %>
+
+  <%= label f, :edad %>
+  <%= number_input f, :edad %>
+  <%= error_tag f, :edad %>
+
+  <%= label f, :tipo %>
+  <select  id="user_tipo" name="user[tipo]"  style="width: 200px;">
+      <option value="2">Secretaria</option>
+      <option value="1">Doctor</option>
+  </select>
+  <%= error_tag f, :tipo %>
+
+  <%= label f, :correo %>
+  <%= text_input f, :correo %>
+  <%= error_tag f, :correo %>
+
+  <%= label f, :password %>
+  <%= password_input f, :password %>
+  <%= error_tag f, :password %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>

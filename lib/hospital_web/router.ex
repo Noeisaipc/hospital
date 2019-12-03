@@ -7,6 +7,7 @@ defmodule HospitalWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug HospitalWeb.Authentication
   end
 
   pipeline :api do
@@ -16,7 +17,12 @@ defmodule HospitalWeb.Router do
   scope "/", HospitalWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", PageController, :login
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
+    resources "/users", UserController
+    resources "/patients", PatientController
+    resources "/appointments", AppointmentController
+    resources "/recipes", RecipeController
   end
 
   # Other scopes may use custom stacks.

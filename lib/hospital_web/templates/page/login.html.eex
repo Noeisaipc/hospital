@@ -1,0 +1,31 @@
+<div class="container"><!--formulario-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+
+            <%= form_for @conn, Routes.session_path(@conn, :create), [as: :session], fn f -> %> 
+              <fieldset>
+            <legend class="text-center header"><h3>Login</h3></legend>
+
+                        <center><img src="images/avatar2.png" alt="" width="200" height="210" class="rounded-circle"/></center>
+            <center> 
+
+                <%= text_input f, :username, placeholder: "Email", class: "form-control" %> 
+
+                </div>
+                <br>
+                <%= password_input f, :password, placeholder: "Contraseña", class: "form-control" %>
+                </div>
+                <br>
+                <div class="col-md-12 text-center">
+            </center>
+            <%= submit "Iniciar Sesión", class: "btn btn-lg btn-primary btn-block text-uppercase" %> 
+             <br><%= link "¿Aún no te has registrado?", to: Routes.user_path(@conn, :new) %>
+                            </div>
+                        </div>
+            <% end %>
+
+          </div>
+        </div>
+    </div>
+</div>

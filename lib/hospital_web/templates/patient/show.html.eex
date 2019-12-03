@@ -1,0 +1,28 @@
+<h1>Show Patient</h1>
+
+<ul>
+
+  <li>
+    <strong>Nombre:</strong>
+    <%= @patient.nombre %>
+  </li>
+
+  <li>
+    <strong>Altura:</strong>
+    <%= @patient.altura %>
+  </li>
+
+  <li>
+    <strong>Edad:</strong>
+    <%= @patient.edad %>
+  </li>
+
+  <li>
+    <strong>Peso:</strong>
+    <%= @patient.peso %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.patient_path(@conn, :edit, @patient) %></span>
+<span><%= link "Back", to: Routes.patient_path(@conn, :index) %></span>
